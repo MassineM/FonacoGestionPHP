@@ -57,6 +57,7 @@ $result = mysqli_query($conn,$sql) or die ("bad query");
 			<th>qte</th>
                 <th>Prix unitaire</th>
              <th>total</th>
+             <th>Paiement</th>
                
                 
                 
@@ -78,17 +79,11 @@ $result = mysqli_query($conn,$sql) or die ("bad query");
                 <td><?php echo $row['quantite']; ?> </td>
                 <td><?php echo $row['prix_unitaire']; ?> </td>
                 <td><?php echo $row['total']; ?> </td>
-                
-                
-                
-                
-                <td><?php echo $row['adresse']; ?> </td>
-                
-                <td><?php echo $row['portable']; ?> </td>
+                <td><?php echo $row['paiement']; ?> </td>
                 
                 
               
-               <td> <a href="updateadmin.php?edit1=<?php echo $row['id']; ?>"  >Plus</a> </tr> 
+            </tr> 
                   <?php  
 };
 ?>
