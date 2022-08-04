@@ -95,6 +95,9 @@ echo implode("\t", array_values ($record)) . "\n";
 <html>
 <head>
     <link rel="stylesheet" href="style/style-table.css" >
+<script language= "JavaScript" src="script.js">
+    
+</script>
         
 </head>
 <body >
@@ -151,12 +154,14 @@ echo implode("\t", array_values ($record)) . "\n";
                 
                 
               
-               <td> <a href="sup.php?edit1=<?php echo $row['id_client']; ?>"  >Supprimer</a> </tr> 
+               <!-- <td> <a href="sup.php?edit1=<?php echo $row['id_client']; ?>"  >Supprimer</a> </td> -->
+ <td>
+<a onclick="MM_openBrWindow('<?php echo $row['id_client'];?>')"> <button  class="confirm">Supprimer</button></a></td> </tr> 
                   <?php  
 };
 ?>
+
 </table>
-        </div>
    
 </body>
 </html>

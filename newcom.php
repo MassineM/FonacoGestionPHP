@@ -38,12 +38,13 @@ if (isset($_POST['submit']) ) {
     $qte = $_POST['qte'];
     $prixuni = $_POST['prixuni'];
     $total = $qte * $prixuni;
+    $reglement = $_POST['reglement'];
         
   
    
  
-        $sql = "INSERT INTO commandes (nom_client, designation, quantite, prix_unitaire, total)
-					VALUES ('$client', '$designation', '$qte', '$prixuni', '$total')";
+        $sql = "INSERT INTO commandes (nom_client, designation, quantite, prix_unitaire, total, reglement)
+					VALUES ('$client', '$designation', '$qte', '$prixuni', '$total', '$reglement')";
         if (mysqli_query($conn, $sql)) {
       
             echo "<script>alert('Nouvelle commande créé avec succès')</script>";
@@ -132,11 +133,12 @@ if (isset($_POST['submit']) ) {
             
               <div class="input-box">
             <span class="details">paiment</span>
-             <select id="Civilite" name="paiment" required>
-		<option value="Civilité">impayée</option>
-                 <option value="Civilité">payée</option>
+             <select id="reglement" name="reglement" required>
+		<option value="">---paiement*---</option>
+		<option value="impayee">impayée</option>
+                 <option value="payee">payée</option>
                  
-                 <option value="Civilité">en cours</option>
+                 <option value="en cours">en cours</option>
         
     </select>
           </div>
@@ -148,6 +150,7 @@ if (isset($_POST['submit']) ) {
 			
         <div class="button">
           <input type="submit" value="Valider" name="submit">
+          
         </div>
       </form>
     </div>  
