@@ -38,6 +38,7 @@ if (isset($_POST['submit']) ) {
     $qte = $_POST['qte'];
     $prixuni = $_POST['prixuni'];
     $total = $qte * $prixuni;
+    $date =$_POST['date'];
     $reglement = $_POST['reglement'];
         
   
@@ -130,6 +131,10 @@ if (isset($_POST['submit']) ) {
             <span class="details">prix unitaire</span>
             <input type="number" step="0.01"  name="prixuni" placeholder="prix unitaire .." >
           </div>
+          <div class="input-box">
+            <span class="details">Date</span>
+            <input type="date"  name="date" placeholder="Date .." required>
+          </div> 
             
               <div class="input-box">
             <span class="details">paiment</span>

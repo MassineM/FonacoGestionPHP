@@ -47,18 +47,25 @@ if ($_SESSION['statut'] != "admin") {
 <?php echo "<h1 >Welcome " . $_SESSION['username'] . "</h1>";?>
 <p>Concentrez toutes vos pensées sur le travail en cours. ...</p>
 <div class="frame">
+	<a class="custom-btn btn-6" href="add-admin.php">Nouveau admin</a><br>
   <a class="custom-btn btn-6" href="newm.php">Nouveau client</a>
   <a class="custom-btn btn-6" href="newcom.php">Nouvelle commande</a>
 	<br>
   <a class="custom-btn btn-6" href="listedescommandes.php">liste des commandes</a>
 	<a class="custom-btn btn-6" href="listeclient.php">liste des client</a>
 	<br>
-	<a class="custom-btn btn-6" href="add-admin.php">Nouveau admin</a>
+	<a class="custom-btn btn-6" href="nvcommandefournisseur.php">Nouveau commande fournisseur</a>
+	
 	<a class="custom-btn btn-6" href="users-list.php">nouveau fournisseur</a>
 	<br>
-  <a class="custom-btn btn-6" href="historique-admin.php">liste des fornisseur</a>
+  <a class="custom-btn btn-6" href="listfournisseur.php">liste des fornisseur</a>
+	<a class="custom-btn btn-6" href="commandefournisseur.php">Commande fournisseur</a>
 	<br>
+	<a class="custom-btn btn-6" href="stock.php"><span>stock</span></a><br>
+	
   <a class="custom-btn btn-6" href="logout.php"><span>Logout</span></a>
+  
+  
   
   	
  
