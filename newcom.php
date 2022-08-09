@@ -101,7 +101,7 @@ if (isset($_POST['submit']) ) {
           <div class="input-box">
             <span class="details">nom du client*</span>
              <select id="Civilite" name="client" required>
-		<option value="Civilité">---nom du client*---</option>
+		<option value="">---nom du client*---</option>
                  <?php 
                  $sql = "select * from clients";
                  $result = mysqli_query($conn,$sql);

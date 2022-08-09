@@ -72,7 +72,6 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
      </form> 
 <table class="fl-table" >
         <tr>
-            <th></th>
 			<th>fournisseur</th>
                 <th>tel</th>
 			<th>email</th>
@@ -91,8 +90,7 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
    
                 ?>
   <tr>			
-	 <td><input type="checkbox" name="formWheelchair" value="Yes" /></td>
-                <td><?php echo $row['nom_fournisseur']; ?> </td>
+	         <td><?php echo $row['nom_fournisseur']; ?> </td>
       			<td><?php echo $row['tel']; ?> </td>
                 <td><?php echo $row['email']; ?> </td>
  <td>

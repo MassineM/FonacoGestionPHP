@@ -76,9 +76,10 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
                 <th><button>Print PDF</button></th>
                 <th>Client</th>
                 <th>Designation</th>
-                <th>qte</th>
+                <th>Qte</th>
                 <th>Prix unitaire</th>
-                <th>total</th>
+                <th>Total</th>
+                <th>Reglement</th>
                 <th>Date</th>
 
 
@@ -102,7 +103,10 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
                 <td><?php echo $row['quantite']; ?> </td>
                 <td><?php echo $row['prix_unitaire']; ?> </td>
                 <td><?php echo $row['total']; ?> </td>
+                <td><?php echo $row['reglement']; ?> </td>
                 <td><?php echo $row['date_commande']; ?> </td>
+ <td>
+<a href="/fonacogestion/FonacoGestionPHP/editCom.php?ID=<?php echo $row['id_commande'];?>"> <button  class="confirm">Modifier</button></a></td>
  <td>
 <a onclick="delCommande('<?php echo $row['id_commande'];?>')"> <button  class="confirm">Supprimer</button></a></td>
 
