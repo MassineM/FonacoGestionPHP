@@ -51,4 +51,15 @@ function delFournisseur(id) { //v2.0
  }
  
 }
+function delFromStock(id) { //v2.0
+    
+ if ( confirm("Etes-vous surs de vouloir supprimer cet élément?") ) {
+    var xmlHttp = new XMLHttpRequest();
+    let toDelete = "/fonacogestion/FonacoGestionPHP/supstock.php?ID="+id;
+    xmlHttp.open("GET", toDelete, true); // true for asynchronous 
+    xmlHttp.send(null);
+    location.reload();
+ }
+ 
+}
     
