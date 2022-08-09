@@ -56,7 +56,7 @@ if ($_SESSION['statut'] != "admin") {
 	<br>
 	<a class="custom-btn btn-6" href="nvcommandefournisseur.php">Nouveau commande fournisseur</a>
 	
-	<a class="custom-btn btn-6" href="users-list.php">nouveau fournisseur</a>
+	<a class="custom-btn btn-6" href="newFournisseur.php">nouveau fournisseur</a>
 	<br>
   <a class="custom-btn btn-6" href="listfournisseur.php">liste des fornisseur</a>
 	<a class="custom-btn btn-6" href="commandefournisseur.php">Commande fournisseur</a>

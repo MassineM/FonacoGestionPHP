@@ -42,6 +42,10 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
 <html>
 <head>
     <link rel="stylesheet" href="style/style-table.css" >
+<script language= "JavaScript" src="script.js">
+    
+</script>
+
         
 </head>
 <body >
@@ -68,7 +72,6 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
      </form> 
 <table class="fl-table" >
         <tr>
-            <th></th>
 			<th>fournisseur</th>
                 <th>designation</th>
 			<th>qte</th>
@@ -90,20 +93,18 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
    
                 ?>
   <tr>			
-	 <td><input type="checkbox" name="formWheelchair" value="Yes" /></td>
                 <td><?php echo $row['nom_fournisseur']; ?> </td>
       			<td><?php echo $row['designation']; ?> </td>
                 <td><?php echo $row['qte']; ?> </td>
                 <td><?php echo $row['prix_unitaire']; ?> </td>
                 <td><?php echo $row['prix_total']; ?> </td>
                 <td><?php echo $row['date']; ?> </td>
+ <td>
+<a onclick="delCommandeFournisseur('<?php echo $row['id'];?>')"> <button  class="confirm">Supprimer</button></a></td></tr>
                 
                 
                 
                 
-                
-              
-               <td> <a href="updateadmin.php?edit1=<?php echo $row['id']; ?>"  >Plus</a> </tr> 
                   <?php  
 };
 ?>

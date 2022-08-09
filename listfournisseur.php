@@ -42,6 +42,10 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
 <html>
 <head>
     <link rel="stylesheet" href="style/style-table.css" >
+<script language= "JavaScript" src="script.js">
+    
+</script>
+
         
 </head>
 <body >
@@ -91,13 +95,8 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
                 <td><?php echo $row['nom_fournisseur']; ?> </td>
       			<td><?php echo $row['tel']; ?> </td>
                 <td><?php echo $row['email']; ?> </td>
-                
-                
-                
-                
-                
-              
-               <td> <a href="updateadmin.php?edit1=<?php echo $row['id']; ?>"  >Plus</a> </tr> 
+ <td>
+<a onclick="delFournisseur('<?php echo $row['id'];?>')"> <button  class="confirm">Supprimer</button></a></td> </tr> 
                   <?php  
 };
 ?>

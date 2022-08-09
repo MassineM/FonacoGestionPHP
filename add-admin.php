@@ -72,68 +72,54 @@ if (isset($_POST['submit']) ) {
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-   
-    <link rel="stylesheet" href="style/style-trf.css" >
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	  
-   </head>
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="style/style-trf.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+</head>
+
 <body>
-	 <header>
-            <a href="#" class="logo">FONACO</a>
-            <nav class="navigation">
-                
-                <?php echo "<a >Welcome " . $_SESSION['username'] . "</a>";?>
-                       <a href="welcome.php">Accueil</a>
-				
-                
-                
-            </nav>
-        </header>
-	
-	
-  <div class="container">
-    <div class="title">Nouveau admin</div>
-    <div class="content">
-      <form method="post" action="">
-        <div class="user-details">
-          
-          
-          
-		
-		
-			
-          
-			
-			
-			<div class="input-box">
-            <span class="details">Login</span>
-            <input type="text"  name="login" placeholder="login .." required>
-          </div> 
-			
-        
-          <div class="input-box">
-            <span class="details">Password</span>
-            <input type="text"  name="password" placeholder="password .." required>
-          </div> 
-          <div class="input-box">
-            <span class="details">confirm your pasword</span>
-            <input type="text"  name="password2" placeholder="password .." required>
-          </div> 
-			
-			
-       </div> 
-			
-        <div class="button">
-          <input type="submit" value="Valider" name="submit">
+    <header>
+        <a href="#" class="logo">FONACO</a>
+        <nav class="navigation">
+
+            <?php echo "<a >Welcome " . $_SESSION['username'] . "</a>";?>
+            <a href="welcome.php">Accueil</a>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <div class="title">Nouveau admin</div>
+        <div class="content">
+            <form method="post" action="">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Login</span>
+                        <input type="text" name="login" placeholder="login .." required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input type="text" name="password" placeholder="password .." required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">confirm your pasword</span>
+                        <input type="text" name="password2" placeholder="password .." required>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Valider" name="submit">
+                </div>
+            </form>
         </div>
-      </form>
-    </div>  
-  </div>
-	
-	
+    </div>
+
+
 
 </body>
+
 </html>

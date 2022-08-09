@@ -19,77 +19,17 @@ if (!$conn) {
 }
 $sql = "select * from clients";
 $result = mysqli_query($conn,$sql) or die ("bad query");
+$recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
 
+if(isset($_GET['subb'])){
+    $c = $_GET['recherche'];
+    $fonaco = "SELECT * FROM `clients` WHERE nom like '%$c%' OR `telephone` like '%$c%' OR `email` like '%$c%'";
+    $result = mysqli_query($conn,$fonaco);
+    // while($b=mysqli_fetch_assoc($req)){
+    //     echo "resultat  = " . $b['designation'];
 
-
-
-
-
-
-  /*  if(isset($_POST["export"])) {
-		if($_POST['civilite']=="Mme"){
-			
-$sql_query = "SELECT * FROM histo1 WHERE civilite = 'mme'";
-$resultset = mysqli_query($conn, $sql_query) ;
-$info_records = array();
-while( $rows = mysqli_fetch_assoc ($resultset) ) {
-$info_records[] = $rows;
+    // }
 }
- 
-		}
-			if($_POST['civilite']=="mr"){
-			
-$sql_query = "SELECT * FROM histo1 WHERE civilite = 'mr'";
-$resultset = mysqli_query($conn, $sql_query) ;
-$info_records = array();
-while( $rows = mysqli_fetch_assoc ($resultset) ) {
-$info_records[] = $rows;
-}
- 
-		}
-		
-					if($_POST['situation']=="prospect"){
-			
-$sql_query = "SELECT * FROM histo1 WHERE situation = 'prospect'";
-$resultset = mysqli_query($conn, $sql_query) ;
-$info_records = array();
-while( $rows = mysqli_fetch_assoc ($resultset) ) {
-$info_records[] = $rows;
-}
- 
-		}
-		
-							if($_POST['situation']=="adhérent"){
-			
-$sql_query = "SELECT * FROM histo1 WHERE situation = 'adhérent'";
-$resultset = mysqli_query($conn, $sql_query) ;
-$info_records = array();
-while( $rows = mysqli_fetch_assoc ($resultset) ) {
-$info_records[] = $rows;
-}
- 
-		}
-		    
- 
-$filename = "data_export_".date('d-m-Y '). ".xls";
-header("Content-Type: application/vnd.ms-excel");
-header("Content-Disposition: attachment; filename=\"$filename\"");
-$show_coloumn = false;
-if(!empty($info_records)) {
-foreach($info_records as $record) {
-if(!$show_coloumn) {
-
-echo implode("\t", array_keys($record)) . "\n";
-$show_coloumn = true;
-}
-echo implode("\t", array_values ($record)) . "\n";
-}
-}
-        exit;
-    }*/
-
-
-
 ?>
     <!DOCTYPE html>
 <html>
@@ -118,6 +58,10 @@ echo implode("\t", array_values ($record)) . "\n";
     
  
   <div class="table-wrapper" > 
+        <form method="GET" action="">
+            Rechercher un mot : <input type="text" name="recherche">
+            <input type="SUBMIT" value="Search" name="subb">
+        </form>
 <table class="fl-table" >
         <tr>
 			<th>Client</th>
@@ -154,9 +98,8 @@ echo implode("\t", array_values ($record)) . "\n";
                 
                 
               
-               <!-- <td> <a href="sup.php?edit1=<?php echo $row['id_client']; ?>"  >Supprimer</a> </td> -->
  <td>
-<a onclick="MM_openBrWindow('<?php echo $row['id_client'];?>')"> <button  class="confirm">Supprimer</button></a></td> </tr> 
+<a onclick="delClient('<?php echo $row['id_client'];?>')"> <button  class="confirm">Supprimer</button></a></td> </tr> 
                   <?php  
 };
 ?>

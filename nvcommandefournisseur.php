@@ -28,7 +28,7 @@ if (!$conn) {
  
 
 if (isset($_POST['submit']) ) {
-        $nom_fournisseur =$_POST['nom_fournisseur'];
+        $nom_fournisseur =$_POST['fournisseur'];
         $designation = $_POST['designation'];
       
         $qte =$_POST['qte'];
@@ -108,7 +108,17 @@ if (isset($_POST['submit']) ) {
 			
 			<div class="input-box">
             <span class="details">Nom fournisseur</span>
-            <input type="text"  name="nom_fournisseur" placeholder="nom fournisseur .." required>
+             <select id="Civilite" name="fournisseur" required>
+		<option value="">---nom du fournisseur*---</option>
+                 <?php 
+                 $sql = "select * from fournisseur";
+                 $result = mysqli_query($conn,$sql);
+                 while($row=mysqli_fetch_assoc($result)){
+                     echo "<option value=" .$row['nom_fournisseur']. ">".$row['nom_fournisseur']."</option>";
+                 }
+                 ?>
+     
+    </select>
           </div> 
 			
         

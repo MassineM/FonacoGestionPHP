@@ -25,7 +25,7 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
     //   && $_GET['recherche']!=""
     if(isset($_GET['subb'])){
         $c = $_GET['recherche'];
-        $fonaco = "SELECT * FROM `commandes` WHERE nom_client like '%$c%' ";
+        $fonaco = "SELECT * FROM `commandes` WHERE nom_client like '%$c%' OR `designation` like '%$c%' OR `reglement` like '%$c%' OR `date_commande` like '%$c%'";
         $result = mysqli_query($conn,$fonaco);
         // while($b=mysqli_fetch_assoc($req)){
         //     echo "resultat  = " . $b['designation'];
@@ -38,77 +38,84 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
 
 
 ?>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+
 <head>
-    <link rel="stylesheet" href="style/style-table.css" >
-        
+    <link rel="stylesheet" href="style/style-table.css">
+<script language= "JavaScript" src="script.js">
+    
+</script>
+
 </head>
-<body >
-      <header>
-            <a href="#" class="logo">FONACO</a>
-            <nav class="navigation">
-                
-                <?php echo "<a >Welcome " . $_SESSION['username'] . "</a>";?>
-                                 
 
-                <a href="welcome.php">Accueil</a>
-                
-                
-                
-    
-            </nav>
-        </header>
-    
- 
-  <div class="table-wrapper" >
-        <form method="GET" action=""> 
-     Rechercher un mot : <input type="text" name="recherche">
-     <input type="SUBMIT" value="Search" name="subb"> 
-     </form> 
-<table class="fl-table" >
-        <tr>
-            <th><button>Print PDF</button></th>
-			<th>Client</th>
+<body>
+    <header>
+        <a href="#" class="logo">FONACO</a>
+        <nav class="navigation">
+
+            <?php echo "<a >Welcome " . $_SESSION['username'] . "</a>";?>
+
+
+            <a href="welcome.php">Accueil</a>
+
+
+
+
+        </nav>
+    </header>
+
+
+    <div class="table-wrapper">
+        <form method="GET" action="">
+            Rechercher un mot : <input type="text" name="recherche">
+            <input type="SUBMIT" value="Search" name="subb">
+        </form>
+        <table class="fl-table">
+            <tr>
+                <th><button>Print PDF</button></th>
+                <th>Client</th>
                 <th>Designation</th>
-			<th>qte</th>
+                <th>qte</th>
                 <th>Prix unitaire</th>
-             <th>total</th>
-             <th>Date</th>
+                <th>total</th>
+                <th>Date</th>
 
-               
-                
-                
-                
-               
-               
-                
-                
-          
-                
-                </tr>
-   <?php while($row=mysqli_fetch_assoc($result)){
+
+
+
+
+
+
+
+
+
+
+            </tr>
+            <?php while($row=mysqli_fetch_assoc($result)){
    
                 ?>
-  <tr>			
-	 <td><input type="checkbox" name="formWheelchair" value="Yes" /></td>
+            <tr>
+                <td><input type="checkbox" name="formWheelchair" value="Yes" /></td>
                 <td><?php echo $row['nom_client']; ?> </td>
-      			<td><?php echo $row['designation']; ?> </td>
+                <td><?php echo $row['designation']; ?> </td>
                 <td><?php echo $row['quantite']; ?> </td>
                 <td><?php echo $row['prix_unitaire']; ?> </td>
                 <td><?php echo $row['total']; ?> </td>
                 <td><?php echo $row['date_commande']; ?> </td>
-                
-                
-                
-                
-              
-               <td> <a href="updateadmin.php?edit1=<?php echo $row['id']; ?>"  >Plus</a> </tr> 
-                  <?php  
+ <td>
+<a onclick="delCommande('<?php echo $row['id_commande'];?>')"> <button  class="confirm">Supprimer</button></a></td>
+
+
+
+
+            </tr>
+            <?php  
 };
 ?>
-</table>
-        </div>
-   
+        </table>
+    </div>
+
 </body>
+
 </html>
