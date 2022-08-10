@@ -10,33 +10,19 @@ if ($_SESSION['statut'] != "admin") {
 } else {
 }
 
-
-
-
-
 if (!$conn) {
       die("Échec de la connexion : " . mysqli_connect_error());
 }
+
 $sql = "select * from commandes";
  $result = mysqli_query($conn,$sql) or die ("bad query");
 $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
 
-     // la requete mysql
-    //   && $_GET['recherche']!=""
-    if(isset($_GET['subb'])){
-        $c = $_GET['recherche'];
-        $fonaco = "SELECT * FROM `commandes` WHERE nom_client like '%$c%' OR `designation` like '%$c%' OR `reglement` like '%$c%' OR `date_commande` like '%$c%'";
-        $result = mysqli_query($conn,$fonaco);
-        // while($b=mysqli_fetch_assoc($req)){
-        //     echo "resultat  = " . $b['designation'];
-
-        // }
-    }
-
-
-
-
-
+if(isset($_GET['subb'])){
+    $c = $_GET['recherche'];
+    $fonaco = "SELECT * FROM `commandes` WHERE nom_client like '%$c%' OR `designation` like '%$c%' OR `reglement` like '%$c%' OR `date_commande` like '%$c%'";
+    $result = mysqli_query($conn,$fonaco);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,9 +57,12 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
             Rechercher un mot : <input type="text" name="recherche">
             <input type="SUBMIT" value="Search" name="subb">
         </form>
+        <a href="/fonacogestion/FonacoGestionPHP/newcom.php">
+        <button>Ajouter</button></a>
         <table class="fl-table">
             <tr>
-                <th><button>Print PDF</button></th>
+                <th><a href="/fonacogestion/FonacoGestionPHP/pdf.php?selected=<?php echo $_GET['selectCom'];?>" target="blank"><button>Print PDF</button></a></th>
+                <th></th>
                 <th>Client</th>
                 <th>Designation</th>
                 <th>Qte</th>
@@ -81,23 +70,14 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
                 <th>Total</th>
                 <th>Reglement</th>
                 <th>Date</th>
-
-
-
-
-
-
-
-
-
-
-
             </tr>
+            <form action="" method="get">
             <?php while($row=mysqli_fetch_assoc($result)){
    
                 ?>
             <tr>
-                <td><input type="checkbox" name="formWheelchair" value="Yes" /></td>
+                <td><input type="checkbox" name="selectCom[]" value="<?php echo $row['id_commande'];?>" /></td>
+                <td><a href="/fonacogestion/FonacoGestionPHP/pdf.php?selected=<?php echo $row['id_commande'];?>" target="blank"><button>Print PDF</button></a></td>
                 <td><?php echo $row['nom_client']; ?> </td>
                 <td><?php echo $row['designation']; ?> </td>
                 <td><?php echo $row['quantite']; ?> </td>
@@ -114,6 +94,7 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
 
 
             </tr>
+            </form>
             <?php  
 };
 ?>

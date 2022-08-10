@@ -21,22 +21,11 @@ $sql = "select * from fournisseur";
  $result = mysqli_query($conn,$sql) or die ("bad query");
 $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
 
-     // la requete mysql
-    //   && $_GET['recherche']!=""
     if(isset($_GET['subb'])){
         $c = $_GET['recherche'];
         $fonaco = "SELECT * FROM fournisseur WHERE nom_fournisseur like '%$c%' ";
         $result = mysqli_query($conn,$fonaco);
-        // while($b=mysqli_fetch_assoc($req)){
-        //     echo "resultat  = " . $b['designation'];
-
-        // }
     }
-
-
-
-
-
 ?>
     <!DOCTYPE html>
 <html>
@@ -70,6 +59,8 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
      Rechercher un mot : <input type="text" name="recherche">
      <input type="SUBMIT" value="Search" name="subb"> 
      </form> 
+        <a href="/fonacogestion/FonacoGestionPHP/newFournisseur.php">
+        <button>Ajouter</button></a>
 <table class="fl-table" >
         <tr>
 			<th>fournisseur</th>

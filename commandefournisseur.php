@@ -70,14 +70,17 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
      Rechercher un mot : <input type="text" name="recherche">
      <input type="SUBMIT" value="Search" name="subb"> 
      </form> 
+     <a href="/fonacogestion/FonacoGestionPHP/nvcommandefournisseur.php">
+        <button>Ajouter</button></a>
 <table class="fl-table" >
         <tr>
-			<th>fournisseur</th>
-                <th>designation</th>
-			<th>qte</th>
-            <th>prix unitaire</th>
-            <th>prix total</th>
-            <th>date</th>
+			<th>Fournisseur</th>
+                <th>Designation</th>
+			<th>Qte</th>
+            <th>Prix unitaire</th>
+            <th>Total</th>
+            <th>Reglement</th>
+            <th>Date</th>
                
                 
                 
@@ -98,7 +101,10 @@ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
                 <td><?php echo $row['qte']; ?> </td>
                 <td><?php echo $row['prix_unitaire']; ?> </td>
                 <td><?php echo $row['prix_total']; ?> </td>
+                <td><?php echo $row['reglement']; ?> </td>
                 <td><?php echo $row['date']; ?> </td>
+ <td>
+<a href="/fonacogestion/FonacoGestionPHP/editComFournisseur.php?ID=<?php echo $row['id'];?>"> <button  class="confirm">Modifier</button></a></td>
  <td>
 <a onclick="delCommandeFournisseur('<?php echo $row['id'];?>')"> <button  class="confirm">Supprimer</button></a></td></tr>
                 

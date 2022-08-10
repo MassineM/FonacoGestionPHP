@@ -47,6 +47,7 @@ if (isset($_POST['submit']) ) {
                 if (mysqli_query($conn, $sql)) {
 
                     echo "<script>alert('Nouvelle commande créée avec succès')</script>";
+                    header("location: commandefournisseur.php");
                 }         
                 else {
                     echo "<script>alert('Erreur')</script>";

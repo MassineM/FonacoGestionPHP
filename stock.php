@@ -82,10 +82,8 @@ if(isset($_GET['subb'])){
                 <td><?php echo $row['designation']; ?> </td>
       			<td><?php echo $row['qte']; ?> </td>
                 <td><?php echo $row['date']; ?> </td>
-              
-                
-                
-              
+ <td>
+<a href="/fonacogestion/FonacoGestionPHP/editStock.php?ID=<?php echo $row['id'];?>"> <button  class="confirm">Modifier</button></a></td>
  <td>
 <a onclick="delFromStock('<?php echo $row['id'];?>')"> <button  class="confirm">Supprimer</button></a></td> </tr> 
                   <?php  

@@ -41,7 +41,8 @@ if (isset($_POST['submit']) ) {
 					VALUES ('$designation', '$qte', '$date')";
         if (mysqli_query($conn, $sql)) {
       
-            echo "<script>alert('Element ajouté au stock')</script>";
+            echo "<script>console.log('Element ajouté au stock')</script>";
+            header("Location: stock.php");
         }         
         else {
             echo "<script>alert('Nccès')</script>";

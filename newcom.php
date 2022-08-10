@@ -49,6 +49,7 @@ if (isset($_POST['submit']) ) {
         if (mysqli_query($conn, $sql)) {
       
             echo "<script>alert('Nouvelle commande créé avec succès')</script>";
+            header("location: listedescommandes.php");
         }         
         else {
             echo "<script>alert('Nccès')</script>";

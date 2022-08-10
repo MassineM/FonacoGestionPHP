@@ -62,6 +62,8 @@ if(isset($_GET['subb'])){
             Rechercher un mot : <input type="text" name="recherche">
             <input type="SUBMIT" value="Search" name="subb">
         </form>
+        <a href="/fonacogestion/FonacoGestionPHP/newm.php">
+        <button>Ajouter</button></a>
 <table class="fl-table" >
         <tr>
 			<th>Client</th>

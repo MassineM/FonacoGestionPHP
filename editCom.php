@@ -33,10 +33,7 @@ $sqltest = "select * from commandes where id_commande =" . $test;
 $resulttest = mysqli_query($conn, $sqltest) or die("bad query");
 
 if (isset($_POST['submit'])) {
-    // $id_agent =  $_SESSION['id'];
-
     $client = $_POST['client'];
-
     $designation = $_POST['designation'];
     $qte = $_POST['qte'];
     $prixuni = $_POST['prixuni'];
@@ -44,26 +41,15 @@ if (isset($_POST['submit'])) {
     $date = $_POST['date'];
     $reglement = $_POST['reglement'];
 
-
-
-
     $sql = "UPDATE commandes set nom_client='".$client."', designation='".$designation."', quantite='".$qte."', prix_unitaire='".$prixuni."', total='".$total."', reglement='".$reglement."' WHERE id_commande='".$test."'";
     if (mysqli_query($conn, $sql)) {
-
         echo "<script>alert('Commande modifiée avec succès')</script>";
         header("Location: listedescommandes.php");
     } else {
-        echo "<script>alert('Nccès')</script>";
+        echo "<script>alert('Erreur')</script>";
         echo "Erreur : " . $sql . "<br>" . mysqli_error($conn);
     }
-
 }
-
-
-
-
-
-
 ?>
 
 

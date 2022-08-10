@@ -52,6 +52,7 @@ if (isset($_POST['submit']) ) {
                 if (mysqli_query($conn, $sql)) {
 
                     echo "<script>alert('Nouveau client créé avec succès')</script>";
+                    header("location: listeclient.php");
                 }         
                 else {
                     echo "<script>alert('Nccès')</script>";

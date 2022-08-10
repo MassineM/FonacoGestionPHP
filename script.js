@@ -21,14 +21,6 @@ function delCommande(id) { //v2.0
  }
  
 }
-function editCommande(id) { //v2.0
-    var xmlHttp = new XMLHttpRequest();
-    let toDelete = "/fonacogestion/FonacoGestionPHP/editCom.php?ID="+id;
-    xmlHttp.open("GET", toDelete, true); // true for asynchronous 
-    xmlHttp.send(null);
-    location.reload();
- 
-}
 function delCommandeFournisseur(id) { //v2.0
     
  if ( confirm("Etes-vous surs de vouloir supprimer cette commande?") ) {
