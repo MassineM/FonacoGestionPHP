@@ -44,8 +44,8 @@ if (isset($_POST['submit']) ) {
   
    
  
-        $sql = "INSERT INTO commandes (nom_client, designation, quantite, prix_unitaire, total, reglement)
-					VALUES ('$client', '$designation', '$qte', '$prixuni', '$total', '$reglement')";
+        $sql = "INSERT INTO commandes (nom_client, designation, quantite, prix_unitaire, total, reglement, date_commande)
+					VALUES ('$client', '$designation', '$qte', '$prixuni', '$total', '$reglement', '$date')";
         if (mysqli_query($conn, $sql)) {
       
             echo "<script>alert('Nouvelle commande créé avec succès')</script>";

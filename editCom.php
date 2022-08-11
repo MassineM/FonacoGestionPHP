@@ -106,17 +106,10 @@ if (isset($_POST['submit'])) {
                         <span class="details">designation</span>
                         <input type="text" name="designation" value="<?php echo $row['designation']; ?>" required>
                     </div>
-
-
-
-
-
-
                     <div class="input-box">
                         <span class="details">qte*</span>
                         <input type="number" name="qte" value="<?php echo $row['quantite']; ?>" required>
                     </div>
-
                     <div class="input-box">
                         <span class="details">prix unitaire</span>
                         <input type="number" step="0.01" name="prixuni" value="<?php echo $row['prix_unitaire']; ?>">
@@ -125,22 +118,15 @@ if (isset($_POST['submit'])) {
                         <span class="details">Date</span>
                         <input type="date" name="date" value="<?php echo $row['date_commande']; ?>" required>
                     </div>
-
                     <div class="input-box">
                         <span class="details">paiment</span>
                         <select id="reglement" name="reglement" required>
                             <option  value="<?php echo $row['reglement']; ?>"><?php echo $row['reglement']; ?></option>
                             <option value="impayee">impayée</option>
                             <option value="payee">payée</option>
-
                             <option value="en cours">en cours</option>
-
                         </select>
                     </div>
-
-
-
-
                 </div>
 
                 <div class="button">

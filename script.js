@@ -54,4 +54,3 @@ function delFromStock(id) { //v2.0
  }
  
 }
-    

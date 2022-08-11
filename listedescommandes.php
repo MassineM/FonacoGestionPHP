@@ -6,22 +6,45 @@ error_reporting(0);
 session_start();
 
 if ($_SESSION['statut'] != "admin") {
-  header("location: index.php");
+    header("location: index.php");
 } else {
 }
 
 if (!$conn) {
-      die("Échec de la connexion : " . mysqli_connect_error());
+    die("Échec de la connexion : " . mysqli_connect_error());
 }
 
 $sql = "select * from commandes";
- $result = mysqli_query($conn,$sql) or die ("bad query");
+$result = mysqli_query($conn, $sql) or die("bad query");
 $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
 
-if(isset($_GET['subb'])){
+if (isset($_GET['subb'])) {
     $c = $_GET['recherche'];
     $fonaco = "SELECT * FROM `commandes` WHERE nom_client like '%$c%' OR `designation` like '%$c%' OR `reglement` like '%$c%' OR `date_commande` like '%$c%'";
-    $result = mysqli_query($conn,$fonaco);
+    $result = mysqli_query($conn, $fonaco);
+}
+
+if (isset($_POST['printpdf'])) {
+    $checkCli = false;
+    $selected = $_POST['selectCom'];
+    if (empty($selected)) echo '<script>alert("Veuillez choisir au moins une commande à imprimer.")</script>';
+    else {
+        for ($i = 0; $i < count($selected) - 1; $i++) {
+            $checkCliReq1 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT nom_client FROM commandes WHERE id_commande=" . $selected[$i]));
+            $checkCliReq2 = mysqli_fetch_assoc(mysqli_query($conn, "SELECT nom_client FROM commandes WHERE id_commande=" . $selected[$i + 1]));
+            if ($checkCliReq1 != $checkCliReq2) {
+                $checkCli = true;
+                break;
+            }
+        }
+        if ($checkCli) echo '<script>alert("Clients différents, veuillez choisir les commandes d\'un même client.")</script>';
+        else {
+            $_SESSION['selected'] = $selected;
+            echo "<script>
+        window.open('pdf.php', '_blank')
+    </script>";
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -29,9 +52,9 @@ if(isset($_GET['subb'])){
 
 <head>
     <link rel="stylesheet" href="style/style-table.css">
-<script language= "JavaScript" src="script.js">
-    
-</script>
+    <script language="JavaScript" src="script.js">
+
+    </script>
 
 </head>
 
@@ -40,7 +63,7 @@ if(isset($_GET['subb'])){
         <a href="#" class="logo">FONACO</a>
         <nav class="navigation">
 
-            <?php echo "<a >Welcome " . $_SESSION['username'] . "</a>";?>
+            <?php echo "<a >Welcome " . $_SESSION['username'] . "</a>"; ?>
 
 
             <a href="welcome.php">Accueil</a>
@@ -58,46 +81,42 @@ if(isset($_GET['subb'])){
             <input type="SUBMIT" value="Search" name="subb">
         </form>
         <a href="/fonacogestion/FonacoGestionPHP/newcom.php">
-        <button>Ajouter</button></a>
+            <button>Ajouter</button></a>
         <table class="fl-table">
-            <tr>
-                <th><a href="/fonacogestion/FonacoGestionPHP/pdf.php?selected=<?php echo $_GET['selectCom'];?>" target="blank"><button>Print PDF</button></a></th>
-                <th></th>
-                <th>Client</th>
-                <th>Designation</th>
-                <th>Qte</th>
-                <th>Prix unitaire</th>
-                <th>Total</th>
-                <th>Reglement</th>
-                <th>Date</th>
-            </tr>
-            <form action="" method="get">
-            <?php while($row=mysqli_fetch_assoc($result)){
-   
+            <form action="" method="post">
+                <tr>
+                    <th><input type="submit" value="Print PDF" name="printpdf"></th>
+                    <th>Client</th>
+                    <th>Designation</th>
+                    <th>Qte</th>
+                    <th>Prix unitaire</th>
+                    <th>Total</th>
+                    <th>Reglement</th>
+                    <th>Date</th>
+                </tr>
+                <?php while ($row = mysqli_fetch_assoc($result)) {
+
                 ?>
-            <tr>
-                <td><input type="checkbox" name="selectCom[]" value="<?php echo $row['id_commande'];?>" /></td>
-                <td><a href="/fonacogestion/FonacoGestionPHP/pdf.php?selected=<?php echo $row['id_commande'];?>" target="blank"><button>Print PDF</button></a></td>
-                <td><?php echo $row['nom_client']; ?> </td>
-                <td><?php echo $row['designation']; ?> </td>
-                <td><?php echo $row['quantite']; ?> </td>
-                <td><?php echo $row['prix_unitaire']; ?> </td>
-                <td><?php echo $row['total']; ?> </td>
-                <td><?php echo $row['reglement']; ?> </td>
-                <td><?php echo $row['date_commande']; ?> </td>
- <td>
-<a href="/fonacogestion/FonacoGestionPHP/editCom.php?ID=<?php echo $row['id_commande'];?>"> <button  class="confirm">Modifier</button></a></td>
- <td>
-<a onclick="delCommande('<?php echo $row['id_commande'];?>')"> <button  class="confirm">Supprimer</button></a></td>
+                    <tr>
+                        <td><input type="checkbox" name="selectCom[]" value="<?php echo $row['id_commande']; ?>" /></td>
+                        <td><?php echo $row['nom_client']; ?> </td>
+                        <td><?php echo $row['designation']; ?> </td>
+                        <td><?php echo $row['quantite']; ?> </td>
+                        <td><?php echo $row['prix_unitaire']; ?> </td>
+                        <td><?php echo $row['total']; ?> </td>
+                        <td><?php echo $row['reglement']; ?> </td>
+                        <td><?php echo $row['date_commande']; ?> </td>
+                        <td><a href="/fonacogestion/FonacoGestionPHP/editCom.php?ID=<?php echo $row['id_commande']; ?>">Modifier</a></td>
+                        <td><button class="confirm" onclick="delCommande('<?php echo $row['id_commande']; ?>')">Supprimer</button></td>
 
 
 
 
-            </tr>
+                    </tr>
+                <?php
+                };
+                ?>
             </form>
-            <?php  
-};
-?>
         </table>
     </div>
 
