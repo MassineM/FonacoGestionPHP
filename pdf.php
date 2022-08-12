@@ -12,10 +12,13 @@ $mylist=$_SESSION['selected'];
 
   
 // New object created and constructor invoked
-$pdf = new FPDF();
+$pdf = new FPDF('P','mm','A4');
   
 // Add new pages. By default no pages available.
 $pdf->AddPage();
+
+
+$pdf->Image('bg.png', 0, 0,210);
   
 // Set font format and font-size
 for ($i=0; $i < count($mylist); $i++) { 

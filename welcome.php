@@ -48,22 +48,19 @@ if ($_SESSION['statut'] != "admin") {
 	<?php echo "<h1 >Welcome " . $_SESSION['username'] . "</h1>"; ?>
 	<p>Concentrez toutes vos pensées sur le travail en cours. ...</p>
 	<div class="frame">
-		<!-- <a class="custom-btn btn-6" href="newm.php">Nouveau client</a>
-  <a class="custom-btn btn-6" href="newcom.php">Nouvelle commande</a>
-	<br> -->
+		<a class="custom-btn btn-6" href="newdevis.php"><span>Nouveau devis</span></a>
+		<a class="custom-btn btn-6" href="listedevis.php"><span>Liste des devis</span></a>
+		<br>
 		<a class="custom-btn btn-6" href="listeclient.php"><span>Liste des client</span></a>
 		<a class="custom-btn btn-6" href="listedescommandes.php"><span>Liste commandes client</span></a>
-		<!-- <a class="custom-btn btn-6" href="nvcommandefournisseur.php">Nouveau commande fournisseur</a>
-	
-	<a class="custom-btn btn-6" href="newFournisseur.php">nouveau fournisseur</a> -->
 		<br>
 		<a class="custom-btn btn-6" href="listfournisseur.php"><span>Liste des fornisseur</span></a>
 		<a class="custom-btn btn-6" href="commandefournisseur.php"><span>Liste commandes fournisseur</span></a>
 		<br>
 		<a class="custom-btn btn-6" href="stock.php"><span>Stock</span></a>
-		<a class="custom-btn btn-6" href="add-admin.php"><span>Nouvel admin</span></a>
 		<br>
 		<a class="custom-btn btn-6" href="logout.php"><span>Logout</span></a>
+		<a class="custom-btn btn-6" href="add-admin.php"><span>Nouvel admin</span></a>
 
 
 
