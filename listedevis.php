@@ -99,9 +99,9 @@ if (isset($_POST['printpdf'])) {
                         <td><?php echo $row['nom']; ?> </td>
                         <td><?php echo $row['date_devis']; ?> </td>
                         <td><?php echo $row['total_ht']; ?> </td>
-                        <td><?php echo $row['reglement']; ?> </td>
+                        <td><?php if($row['valide']) echo 'Validé'; else echo 'En attente';?> </td>
                         <td><a href="/fonacogestion/FonacoGestionPHP/listecommandes.php?numdevis=<?php echo $row['id_devis']; ?>">Consulter</a></td>
-                        <td><a href="/fonacogestion/FonacoGestionPHP/editCom.php?ID=<?php echo $row['id_commande']; ?>">Modifier</a></td>
+                        <td><a href="/fonacogestion/FonacoGestionPHP/editdevis.php?ID=<?php echo $row['id_devis']; ?>">Modifier</a></td>
                         <td><button class="confirm" onclick="delCommande('<?php echo $row['id_commande']; ?>')">Supprimer</button></td>
 
 

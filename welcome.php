@@ -11,10 +11,8 @@ error_reporting(0);
 session_start();
 
 
-if ($_SESSION['statut'] != "admin") {
+if ($_SESSION['statut'] != "admin") 
 	header("location: index.php");
-} else {
-}
 
 
 

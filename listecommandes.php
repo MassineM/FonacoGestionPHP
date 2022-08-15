@@ -60,6 +60,8 @@ if (isset($_POST['printpdf'])) {
             <button>Retour</button></a>
         <a href="<?php echo '/fonacogestion/FonacoGestionPHP/addcommande.php?numdevis='.$_GET['numdevis']?>"> 
             <button>Ajouter</button></a>
+        <a href="<?php echo '/fonacogestion/FonacoGestionPHP/pdf.php?ID='.$_GET['numdevis']?>"> 
+            <button>Print PDF</button></a>
         <table class="fl-table">
             <tr><td>Devis n° <?php echo $reqDevis['id_devis'].'</td><td>'.$reqDevis['nom'].'</td><td>'.$reqDevis['date_devis'].'</td><td>'.$reqDevis['reglement'].'</td>'; ?></tr>
                 <tr>
