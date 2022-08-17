@@ -1,43 +1,31 @@
-
-
-<?php 
-
+<?php
 include 'cnfig.php';
-
 session_start();
-
 error_reporting(0);
 
-
+if ($_SESSION['statut'] == "admin")
+  header("location: welcome.php");
+if (!$conn)
+  die("Échec de la connexion : " . mysqli_connect_error());
 
 if (isset($_POST['submit'])) {
-	$login = $_POST['login'];
-	$password = ($_POST['password']);
-    $statut  = "admin";
-
-	$sql = "SELECT * FROM admins WHERE login='$login' AND password='$password'  AND statut='$statut'";
-	$result = mysqli_query($conn, $sql);
-	if ($result->num_rows > 0) {
-		$row = mysqli_fetch_assoc($result);
-		$_SESSION['username'] =$row['login'];
-        $_SESSION['statut'] = $row['statut'];
-        $_SESSION['id'] = $row['id'];
-        
-        
-		header("Location: welcome.php");
-	} 
-    else {
-		echo "<script>alert('Woops! Login or Password is Wrong.')</script>";
-	}
-
-
+  $login = $_POST['login'];
+  $password = ($_POST['password']);
+  $statut  = "admin";
+  $sql = "SELECT * FROM admins WHERE login='$login' AND password='$password'  AND statut='$statut'";
+  $result = mysqli_query($conn, $sql);
+  if ($result->num_rows > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION['username'] = $row['login'];
+    $_SESSION['statut'] = $row['statut'];
+    $_SESSION['id'] = $row['id'];
+    header("Location: welcome.php");
+  } else
+    echo "<script>alert('Identifiant ou mot de passe incorrect.')</script>";
 }
-
 ?>
-
-
-
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>Sign in</title>
@@ -86,28 +74,24 @@ if (isset($_POST['submit'])) {
         <div class="formbg-outer">
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-              <span class="padding-bottom--15">Sign in to your account</span>
+              <span class="padding-bottom--15">Se connecter</span>
               <form id="stripe-login" method="post" action="">
                 <div class="field padding-bottom--24">
-                  <label for="email">Login</label>
+                  <label for="email">Identifiant</label>
                   <input type="text" name="login">
                 </div>
                 <div class="field padding-bottom--24">
                   <div class="grid--50-50">
-                    <label for="password">Password</label>
-                    
+                    <label for="password">Mot de passe</label>
                   </div>
                   <input type="password" name="password">
                 </div>
-              
                 <div class="field padding-bottom--24">
                   <input type="submit" name="submit" value="Continue">
                 </div>
-                
               </form>
             </div>
           </div>
-        
         </div>
       </div>
     </div>

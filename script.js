@@ -10,14 +10,13 @@ function delClient(id) { //v2.0
  }
  
 }
-function delCommande(id) { //v2.0
+function delCommande(idcom,iddevis) { //v2.0
     
  if ( confirm("Etes-vous surs de vouloir supprimer cette commande?") ) {
     var xmlHttp = new XMLHttpRequest();
-    let toDelete = "/fonacogestion/FonacoGestionPHP/supCom.php?ID="+id;
+    let toDelete = "/fonacogestion/FonacoGestionPHP/supCom.php?idcom="+idcom+"&numdevis="+iddevis;
     xmlHttp.open("GET", toDelete, true); // true for asynchronous 
     xmlHttp.send(null);
-    location.reload();
  }
  
 }

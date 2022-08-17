@@ -54,9 +54,15 @@ while ($row=mysqli_fetch_assoc($result)) {
     $pdf->Ln();
 }
 
-$pdf -> SetY(195);
+$pdf -> SetY(196);
 $pdf -> SetX(152);
 $pdf->Cell(40, 5, $reqdevis['total_ht'], 0, 0, 'R');
+$pdf->Ln();
+$pdf -> SetX(152);
+$pdf->Cell(40, 6, $reqdevis['total_ht']*2/10, 0, 0, 'R');
+$pdf->Ln();
+$pdf -> SetX(152);
+$pdf->Cell(40, 7, $reqdevis['total_ht']*12/10, 0, 0, 'R');
   
 // Close document and sent to the browser
 $pdf->Output();
