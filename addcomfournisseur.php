@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
           <select name="fournisseur" required>
             <option value="">---nom du fournisseur---</option>
             <?php
-            $sql = "select * from fournisseur";
+            $sql = "select * from fournisseurs";
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_assoc($result)) {
               echo "<option value=" . $row['id_fournisseur'] . ">" . $row['nom_fournisseur'] . "</option>";

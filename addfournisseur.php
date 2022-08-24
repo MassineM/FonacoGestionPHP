@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
   if ($result->num_rows > 0)
     echo "<script>alert('" . $fournisseur . " existe déjà')</script>";
   else {
-    $sql = "INSERT INTO fournisseur (nom_fournisseur, tel, email)
+    $sql = "INSERT INTO fournisseurs (nom_fournisseur, tel, email)
                             VALUES ('$fournisseur', '$portable', '$email')";
     if (mysqli_query($conn, $sql)) {
 

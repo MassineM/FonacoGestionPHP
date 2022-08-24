@@ -2,7 +2,7 @@
 include 'header.php';
 
 $test = $_GET['ID'];
-$sqltest = "select * from commande_fournisseur where id =" . $test;
+$sqltest = "SELECT * FROM commandes_fournisseur JOIN fournisseurs ON commandes_fournisseur.id_fournisseur=fournisseurs.id_fournisseur WHERE id_com_fournisseur =" . $test;
 $resulttest = mysqli_query($conn, $sqltest) or die("bad query");
 
 if (isset($_POST['submit'])) {
@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     $total = $qte * $prixuni;
     $date = $_POST['date'];
     $reglement = $_POST['reglement'];
-    $sql = "UPDATE commandes_fournisseur set nom_fournisseur='" . $fournisseur . "', designation='" . $designation . "', qte='" . $qte . "', prix_unitaire='" . $prixuni . "', prix_total='" . $total . "', reglement='" . $reglement . "', date_commande='" . $date . "' WHERE id_com_fournisseur=" . $test;
+    $sql = "UPDATE commandes_fournisseur set id_fournisseur='" . $fournisseur . "', designation='" . $designation . "', qte='" . $qte . "', prix_unitaire='" . $prixuni . "', prix_total='" . $total . "', reglement='" . $reglement . "', date_commande='" . $date . "' WHERE id_com_fournisseur=" . $test;
     if (mysqli_query($conn, $sql)) {
         echo "<script>alert('Commande modifiée avec succès')</script>";
         header("Location: listecomfournisseurs.php");
@@ -33,12 +33,12 @@ if (isset($_POST['submit'])) {
                     <div class="input-box">
                         <span class="details">nom du fournisseur*</span>
                         <select id="fournisseur" name="fournisseur" required>
-                            <option value="<?php echo $row['nom_fournisseur']; ?>"><?php echo $row['nom_fournisseur']; ?></option>
+                            <option value="<?php echo $row['id_fournisseur']; ?>"><?php echo $row['nom_fournisseur']; ?></option>
                             <?php
-                            $sql = "select * from fournisseur";
+                            $sql = "SELECT * FROM fournisseurs";
                             $result = mysqli_query($conn, $sql);
                             while ($ligne = mysqli_fetch_assoc($result))
-                                echo "<option value=" . $ligne['nom_fournisseur'] . ">" . $ligne['nom_fournisseur'] . "</option>";
+                                echo "<option value=" . $ligne['id_fournisseur'] . ">" . $ligne['nom_fournisseur'] . "</option>";
                             ?>
                         </select>
                     </div>

@@ -17,7 +17,7 @@ if (isset($_GET['subb'])) {
         Rechercher dans la table : <input type="text" name="recherche">
         <input type="SUBMIT" value="Entrer" name="subb">
     </form>
-    <a href="/fonacogestion/FonacoGestionPHP/addstock.php">
+    <a href="addstock.php">
         <button>Ajouter</button></a>
     <table class="fl-table">
         <tr>
@@ -30,8 +30,8 @@ if (isset($_GET['subb'])) {
                 <td><?php echo $row['designation']; ?> </td>
                 <td><?php echo $row['qte']; ?> </td>
                 <td><?php echo $row['date']; ?> </td>
-                <td><a href="/fonacogestion/FonacoGestionPHP/editStock.php?ID=<?php echo $row['id_stock']; ?>"> <button class="confirm">Modifier</button></a></td>
-                <td><a href="/fonacogestion/FonacoGestionPHP/delstock.php?ID=<?php echo $row['id_stock']; ?>" onclick="return confirm('Êtes-vous sur de vouloir supprimer cet élément?')"><button class="confirm">Supprimer</button></a></td>
+                <td><a href="editStock.php?ID=<?php echo $row['id_stock']; ?>"> <button class="confirm">Modifier</button></a></td>
+                <td><a href="delstock.php?ID=<?php echo $row['id_stock']; ?>" onclick="return confirm('Êtes-vous sur de vouloir supprimer cet élément?')"><button class="confirm">Supprimer</button></a></td>
             </tr>
         <?php }; ?>
     </table>

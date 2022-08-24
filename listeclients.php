@@ -14,15 +14,16 @@ if (isset($_GET['subb'])) {
 <div class="table-wrapper container">
     <form method="GET" action="">
         Rechercher dans la table : <input type="text" name="recherche">
-        <input type="SUBMIT" value="Entrer" name="subb">
+        <input type="SUBMIT" value="Entrer" name="subb" class="rechercher">
     </form>
-    <a href="/fonacogestion/FonacoGestionPHP/addclient.php">
+    <a href="addclient.php">
         <button>Ajouter</button></a>
     <table class="fl-table">
         <tr>
             <th>Client</th>
             <th>Telephone</th>
             <th>Email</th>
+            <th>Adresse</th>
             <th>Montat max</th>
         </tr>
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
@@ -30,9 +31,9 @@ if (isset($_GET['subb'])) {
                 <td><?php echo $row['nom']; ?> </td>
                 <td><?php echo $row['telephone']; ?> </td>
                 <td><?php echo $row['email']; ?> </td>
-                <td><?php echo $row['montantmax']; ?> </td>
                 <td><?php echo $row['adresse']; ?> </td>
-                <td><a href="/fonacogestion/FonacoGestionPHP/delclient.php?ID=<?php echo $row['id_client']; ?>" onclick="return confirm('Êtes-vous sur de vouloir supprimer ce client?')">Supprimer</a></td>
+                <td><?php echo $row['montantmax']; ?> </td>
+                <td><a href="delclient.php?ID=<?php echo $row['id_client']; ?>" onclick="return confirm('Êtes-vous sur de vouloir supprimer ce client?')">Supprimer</a></td>
             </tr>
         <?php }; ?>
     </table>

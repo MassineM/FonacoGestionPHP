@@ -8,11 +8,11 @@ $reqDevis = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM devis JOIN cli
 ?>
 
 <div class="table-wrapper container">
-    <a href="/fonacogestion/FonacoGestionPHP/listedevis.php">
+    <a href="listedevis.php">
         <button>Retour</button></a>
-    <a href="<?php echo '/fonacogestion/FonacoGestionPHP/addcommande.php?numdevis=' . $_GET['numdevis'] ?>">
+    <a href="<?php echo 'addcommande.php?numdevis=' . $_GET['numdevis'] ?>">
         <button>Ajouter</button></a>
-    <a href="<?php echo '/fonacogestion/FonacoGestionPHP/pdf.php?ID=' . $_GET['numdevis'] ?>">
+    <a href="<?php echo 'pdf.php?ID=' . $_GET['numdevis'] ?>">
         <button>Print PDF</button></a>
     <table class="fl-table">
         <tr>
@@ -32,8 +32,8 @@ $reqDevis = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM devis JOIN cli
                 <td><?php echo $row['quantite']; ?> </td>
                 <td><?php echo $row['prix_unitaire']; ?> </td>
                 <td><?php echo $row['total']; ?> </td>
-                <td><a href="/fonacogestion/FonacoGestionPHP/editcommande.php?ID=<?php echo $row['id_commande']; ?>">Modifier</a></td>
-                <td><a href="/fonacogestion/FonacoGestionPHP/delcommande.php?idcom=<?php echo $row['id_commande']; ?>&numdevis=<?php echo $reqDevis['id_devis'] ?>" onclick="return confirm('Êtes-vous sur de vouloir supprimer cette commande?')">Supprimer</a></td>
+                <td><a href="editcommande.php?ID=<?php echo $row['id_commande']; ?>">Modifier</a></td>
+                <td><a href="delcommande.php?idcom=<?php echo $row['id_commande']; ?>&numdevis=<?php echo $reqDevis['id_devis'] ?>" onclick="return confirm('Êtes-vous sur de vouloir supprimer cette commande?')">Supprimer</a></td>
             </tr>
         <?php }; ?>
         <tr>

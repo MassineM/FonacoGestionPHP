@@ -1,6 +1,7 @@
 <?php
   
 include 'cnfig.php';
+include 'functions.php';
 
 error_reporting(0);
 
@@ -62,7 +63,12 @@ $pdf -> SetX(152);
 $pdf->Cell(40, 6, $reqdevis['total_ht']*2/10, 0, 0, 'R');
 $pdf->Ln();
 $pdf -> SetX(152);
-$pdf->Cell(40, 7, $reqdevis['total_ht']*12/10, 0, 0, 'R');
+$total_ttc=$reqdevis['total_ht']*12/10;
+$pdf->Cell(40, 7,$total_ttc, 0, 0, 'R');
+$pdf->Ln();
+$pdf -> SetY(210);
+$pdf -> SetX(20);
+$pdf->Cell(40, 7, toLetters($total_ttc), 0, 0, 'L');
   
 // Close document and sent to the browser
 $pdf->Output();

@@ -15,14 +15,21 @@ if (!$conn)
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="style/style-trf.css">
+  <link rel="stylesheet" href="style/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
   <header>
-    <a href="#" class="logo">FONACO</a>
+    <div class="headleft">
+      <h1 class="logo">FONACO</h1>
+      <p class="welcoming">Welcome <?php echo $_SESSION['username']; ?></p>
+    </div>
     <nav class="navigation">
-      <?php echo "<a >Welcome " . $_SESSION['username'] . "</a>"; ?>
       <a href="welcome.php">Accueil</a>
+      <a href="listedevis.php">Devis</a>
+      <a href="listeclients.php">Clients</a>
+      <a href="listefournisseurs.php">Fournisseurs</a>
+      <a href="stock.php">Stock</a>
     </nav>
   </header>

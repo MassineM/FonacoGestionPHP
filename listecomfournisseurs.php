@@ -14,9 +14,9 @@ if (isset($_GET['subb'])) {
 <div class="table-wrapper container">
     <form method="GET" action="">
         Rechercher dans la table : <input type="text" name="recherche">
-        <input type="SUBMIT" value="Entrer" name="subb">
+        <input type="submit" value="Entrer" name="subb" class="rechercher">
     </form>
-    <a href="/fonacogestion/FonacoGestionPHP/addcomfournisseur.php">
+    <a href="addcomfournisseur.php">
         <button>Ajouter</button></a>
     <table class="fl-table">
         <tr>
@@ -36,9 +36,9 @@ if (isset($_GET['subb'])) {
                 <td><?php echo $row['prix_unitaire']; ?> </td>
                 <td><?php echo $row['prix_total']; ?> </td>
                 <td><?php echo $row['reglement']; ?> </td>
-                <td><?php echo $row['date']; ?> </td>
-                <td><a href="/fonacogestion/FonacoGestionPHP/editcomfournisseur.php?ID=<?php echo $row['id_com_fournisseur']; ?>"> <button class="confirm">Modifier</button></a></td>
-                <td><a href="/fonacogestion/FonacoGestionPHP/delcomfournisseur.php?ID=<?php echo $row['id_com_fournisseur']; ?>" onclick="return confirm('Êtes-vous sur de vouloir supprimer cette commande?')">Supprimer</a></td>
+                <td><?php echo $row['date_commande']; ?> </td>
+                <td><a href="editcomfournisseur.php?ID=<?php echo $row['id_com_fournisseur']; ?>">Modifier</a></td>
+                <td><a href="delcomfournisseur.php?ID=<?php echo $row['id_com_fournisseur']; ?>" onclick="return confirm('Êtes-vous sur de vouloir supprimer cette commande?')">Supprimer</a></td>
             </tr>
         <?php }; ?>
     </table>

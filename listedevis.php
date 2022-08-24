@@ -14,9 +14,9 @@ if (isset($_GET['subb'])) {
 <div class="table-wrapper container">
     <form method="GET" action="">
         Rechercher dans la table : <input type="text" name="recherche">
-        <input type="SUBMIT" value="Entrer" name="subb">
+        <input type="SUBMIT" value="Entrer" name="subb" class="rechercher">
     </form>
-    <a href="/fonacogestion/FonacoGestionPHP/newdevis.php">
+    <a href="newdevis.php">
         <button>Ajouter</button></a>
     <table class="fl-table">
         <form action="" method="post">
@@ -35,9 +35,9 @@ if (isset($_GET['subb'])) {
                     <td><?php echo $row['total_ht']; ?> </td>
                     <td><?php if ($row['valide']) echo 'Validé';
                         else echo 'En attente'; ?> </td>
-                    <td><a href="/fonacogestion/FonacoGestionPHP/listecommandes.php?numdevis=<?php echo $row['id_devis']; ?>">Consulter</a></td>
-                    <td><a href="/fonacogestion/FonacoGestionPHP/editdevis.php?ID=<?php echo $row['id_devis']; ?>">Modifier</a></td>
-                    <td><a href="/fonacogestion/FonacoGestionPHP/deldevis.php?ID=<?php echo $row['id_devis']; ?>" onclick="return confirm('Êtes-vous sur de vouloir supprimer ce devis?')">Supprimer</a></td>
+                    <td><a href="listecommandes.php?numdevis=<?php echo $row['id_devis']; ?>">Consulter</a></td>
+                    <td><a href="editdevis.php?ID=<?php echo $row['id_devis']; ?>">Modifier</a></td>
+                    <td><a href="deldevis.php?ID=<?php echo $row['id_devis']; ?>" onclick="return confirm('Êtes-vous sur de vouloir supprimer ce devis?')">Supprimer</a></td>
                 </tr>
             <?php }; ?>
         </form>

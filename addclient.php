@@ -6,12 +6,13 @@ if (isset($_POST['submit'])) {
   $portable =     $_POST['portable'];
   $email =   $_POST['email'];
   $max = $_POST['max'];
+  $adresse = $_POST['adresse'];
   $sql = "SELECT * FROM clients WHERE telephone='$portable'";
   $result = mysqli_query($conn, $sql);
   if ($result->num_rows > 0) echo "<script>alert('" . $client . " deja existe')</script>";
   else {
-    $sql = "INSERT INTO clients (nom, telephone, email, montantmax)
-                            VALUES ('$client', '$portable', '$email', '$max')";
+    $sql = "INSERT INTO clients (nom, telephone, email, montantmax, adresse)
+                            VALUES ('$client', '$portable', '$email', '$max', '$adresse')";
     if (mysqli_query($conn, $sql)) {
       echo "<script>alert('Nouveau client créé avec succès')</script>";
       header("location: listeclients.php");
@@ -43,7 +44,11 @@ if (isset($_POST['submit'])) {
         </div>
         <div class="input-box">
           <span class="details">Montant max</span>
-          <input type="text" name="max" placeholder="montant max...">
+          <input type="number" name="max" placeholder="montant max...">
+        </div>
+        <div class="input-box">
+          <span class="details">Adresse</span>
+          <input type="text" name="adresse" placeholder="adresse...">
         </div>
       </div>
       <div class="button">
