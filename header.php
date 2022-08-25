@@ -30,6 +30,7 @@ if (!$conn)
       <a href="listedevis.php">Devis</a>
       <a href="listeclients.php">Clients</a>
       <a href="listefournisseurs.php">Fournisseurs</a>
+      <a href="listecomfournisseurs.php">Commandes</a>
       <a href="stock.php">Stock</a>
     </nav>
   </header>

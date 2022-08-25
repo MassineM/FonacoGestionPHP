@@ -16,8 +16,10 @@ if (isset($_GET['subb'])) {
         Rechercher dans la table : <input type="text" name="recherche">
         <input type="SUBMIT" value="Entrer" name="subb" class="rechercher">
     </form>
+    <div class="btnscont">
     <a href="addclient.php">
-        <button>Ajouter</button></a>
+        <button class="minibtn">Ajouter</button></a>
+</div>
     <table class="fl-table">
         <tr>
             <th>Client</th>
@@ -33,6 +35,7 @@ if (isset($_GET['subb'])) {
                 <td><?php echo $row['email']; ?> </td>
                 <td><?php echo $row['adresse']; ?> </td>
                 <td><?php echo $row['montantmax']; ?> </td>
+                <td><a href="editclient.php?ID=<?php echo $row['id_client']; ?>">Modifier</a></td>
                 <td><a href="delclient.php?ID=<?php echo $row['id_client']; ?>" onclick="return confirm('Êtes-vous sur de vouloir supprimer ce client?')">Supprimer</a></td>
             </tr>
         <?php }; ?>

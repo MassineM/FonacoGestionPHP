@@ -15,9 +15,9 @@ if (isset($_GET['subb'])) {
     <form method="GET" action="">
         Rechercher dans la table : <input type="text" name="recherche">
         <input type="SUBMIT" value="Entrer" name="subb" class="rechercher">
-    </form>
+    </form><div class="btnscont">
     <a href="addfournisseur.php">
-        <button>Ajouter</button></a>
+        <button class="minibtn">Ajouter</button></a></div>
     <table class="fl-table">
         <tr>
             <th>Fournisseur</th>
@@ -29,6 +29,7 @@ if (isset($_GET['subb'])) {
                 <td><?php echo $row['nom_fournisseur']; ?> </td>
                 <td><?php echo $row['tel']; ?> </td>
                 <td><?php echo $row['email']; ?> </td>
+                <td><a href="editfournisseur.php?ID=<?php echo $row['id_fournisseur']; ?>">Modifier</a></td>
                 <td>
                     <a href="delfournisseur.php?ID=<?php echo $row['id_fournisseur']; ?>" onclick="return confirm('Êtes-vous sur de vouloir supprimer ce fournisseur?')">Supprimer</a>
                 </td>

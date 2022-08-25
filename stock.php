@@ -15,10 +15,12 @@ if (isset($_GET['subb'])) {
 <div class="table-wrapper container">
     <form method="GET" action="">
         Rechercher dans la table : <input type="text" name="recherche">
-        <input type="SUBMIT" value="Entrer" name="subb">
+        <input type="SUBMIT" value="Entrer" name="subb" class="rechercher">
     </form>
+    <div class="btnscont">
     <a href="addstock.php">
-        <button>Ajouter</button></a>
+        <button class="minibtn">Ajouter</button></a>
+</div>
     <table class="fl-table">
         <tr>
             <th>Designation</th>
@@ -30,8 +32,8 @@ if (isset($_GET['subb'])) {
                 <td><?php echo $row['designation']; ?> </td>
                 <td><?php echo $row['qte']; ?> </td>
                 <td><?php echo $row['date']; ?> </td>
-                <td><a href="editStock.php?ID=<?php echo $row['id_stock']; ?>"> <button class="confirm">Modifier</button></a></td>
-                <td><a href="delstock.php?ID=<?php echo $row['id_stock']; ?>" onclick="return confirm('Êtes-vous sur de vouloir supprimer cet élément?')"><button class="confirm">Supprimer</button></a></td>
+                <td><a href="editStock.php?ID=<?php echo $row['id_stock']; ?>">Modifier</a></td>
+                <td><a href="delstock.php?ID=<?php echo $row['id_stock']; ?>" onclick="return confirm('Êtes-vous sur de vouloir supprimer cet élément?')">Supprimer</a></td>
             </tr>
         <?php }; ?>
     </table>

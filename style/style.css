@@ -12,7 +12,20 @@ body {
     background-color: #ffffff;
 }
 
+.minibtn{
+  width: auto;
+  padding: 0 10px;
+}
 
+.minibtn:disabled,
+.minibtn[disabled]{
+  background: linear-gradient(-135deg, #a7a7a7, #505050);
+}
+
+.btnscont{
+  display: flex;
+  justify-content: space-evenly;
+}
 
 .rechercher {
   background-color: rgb(84, 105, 212);
@@ -21,6 +34,10 @@ body {
   color: #fff;
   font-weight: 600;
   cursor: pointer;
+}
+
+.disabledA{
+  color: #505050;
 }
 
 header {

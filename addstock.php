@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
                 </div>
             </div>
             <div class="button">
-                <input type="submit" value="Valider" name="submit">
+                <input type="submit" value="Entrer" name="submit">
             </div>
         </form>
     </div>

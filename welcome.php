@@ -31,7 +31,7 @@ if (!$conn)
 		<br>
 		<a class="custom-btn btn-6" href="stock.php"><span>Stock</span></a>
 		<br>
-		<a class="custom-btn btn-6" href="add-admin.php"><span>Nouvel admin</span></a>
+		<a class="custom-btn btn-6" href="addadmin.php"><span>Nouvel admin</span></a>
 		<br>
 		<a class="custom-btn btn-6" href="logout.php"><span>Logout</span></a>
 	</div>

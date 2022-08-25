@@ -16,8 +16,10 @@ if (isset($_GET['subb'])) {
         Rechercher dans la table : <input type="text" name="recherche">
         <input type="submit" value="Entrer" name="subb" class="rechercher">
     </form>
+    <div class="btnscont">
     <a href="addcomfournisseur.php">
-        <button>Ajouter</button></a>
+        <button class="minibtn">Ajouter</button></a>
+        </div>
     <table class="fl-table">
         <tr>
             <th>Fournisseur</th>

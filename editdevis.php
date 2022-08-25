@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
   $sql = "UPDATE devis SET id_client='$idCli', date_devis='$date', valide='$validation' WHERE id_devis='$idDevis'";
   if (mysqli_query($conn, $sql)) {
     echo "<script>alert('Devis modifié avec succès')</script>";
-    header("Location: listedevis.php");
+    header("Location: listecommandes.php?numdevis=" . $idDevis);
   } else {
     echo "<script>alert('Erreur')</script>";
     echo "Erreur : " . $sql . "<br>" . mysqli_error($conn);
@@ -47,7 +47,7 @@ if (isset($_POST['submit'])) {
         </div>
       </div>
       <div class="button">
-        <input type="submit" value="Valider" name="submit">
+        <input type="submit" value="Entrer" name="submit">
       </div>
     </form>
   </div>
