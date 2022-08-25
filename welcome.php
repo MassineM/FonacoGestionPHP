@@ -20,8 +20,8 @@ if (!$conn)
 		<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
 	</header>
-	<?php echo "<h1 >Welcome " . $_SESSION['username'] . "</h1>"; ?>
-	<p>Concentrez toutes vos pensées sur le travail en cours. ...</p>
+	<?php echo "<h1 >Bienvenue " . $_SESSION['username'] . "</h1>"; ?>
+	<p>Plateforme de gestion de l'agence FONACO</p>
 	<div class="frame">
 		<a class="custom-btn btn-6" href="listeclients.php"><span>Liste des clients</span></a>
 		<a class="custom-btn btn-6" href="listedevis.php"><span>Liste des devis</span></a>
