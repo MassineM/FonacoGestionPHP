@@ -1,7 +1,14 @@
 <?php
 include 'header.php';
 
-$sql = "select * from fournisseurs";
+if(isset($_GET['ord']) && isset($_GET['desc'])){
+    $order=$_GET['ord'];
+    $desc=$_GET['desc'];
+    if($desc) $sql = "SELECT * FROM fournisseurs ORDER BY ".$order." DESC";
+    else $sql = "SELECT * FROM fournisseurs ORDER BY ".$order;
+} else {
+    $sql = "SELECT * FROM fournisseurs ORDER BY id_fournisseur DESC";
+}
 $result = mysqli_query($conn, $sql) or die("bad query");
 $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
 if (isset($_GET['subb'])) {
@@ -20,9 +27,9 @@ if (isset($_GET['subb'])) {
         <button class="minibtn">Ajouter</button></a></div>
     <table class="fl-table">
         <tr>
-            <th>Fournisseur</th>
-            <th>Téléphone</th>
-            <th>Email</th>
+            <th>Fournisseur<a href="listefournisseurs.php?ord=nom_fournisseur&desc=0">⬆</a><a href="listefournisseurs.php?ord=nom_fournisseur&desc=1">⬇</a></th>
+            <th>Téléphone<a href="listefournisseurs.php?ord=tel&desc=0">⬆</a><a href="listefournisseurs.php?ord=tel&desc=1">⬇</a></th>
+            <th>Email<a href="listefournisseurs.php?ord=email&desc=0">⬆</a><a href="listefournisseurs.php?ord=email&desc=1">⬇</a></th>
         </tr>
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
             <tr>

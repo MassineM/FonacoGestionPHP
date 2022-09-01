@@ -4,6 +4,7 @@ include 'header.php';
 $test = $_GET['ID'];
 $sqltest = "SELECT * FROM commandes_fournisseur JOIN fournisseurs ON commandes_fournisseur.id_fournisseur=fournisseurs.id_fournisseur WHERE id_com_fournisseur =" . $test;
 $resulttest = mysqli_query($conn, $sqltest) or die("bad query");
+$row = mysqli_fetch_assoc($resulttest);
 
 if (isset($_POST['submit'])) {
     $fournisseur = $_POST['fournisseur'];
@@ -12,8 +13,8 @@ if (isset($_POST['submit'])) {
     $prixuni = $_POST['prixuni'];
     $total = $qte * $prixuni;
     $date = $_POST['date'];
-    $reglement = $_POST['reglement'];
-    $sql = "UPDATE commandes_fournisseur set id_fournisseur='" . $fournisseur . "', designation='" . $designation . "', qte='" . $qte . "', prix_unitaire='" . $prixuni . "', prix_total='" . $total . "', reglement='" . $reglement . "', date_commande='" . $date . "' WHERE id_com_fournisseur=" . $test;
+    $reglement = $_POST['paiement'];
+    $sql = "UPDATE commandes_fournisseur set id_fournisseur='" . $fournisseur . "', designation='" . $designation . "', qte='" . $qte . "', prix_unitaire='" . $prixuni . "', prix_total='" . $total . "', paye='" . $reglement . "', date_commande='" . $date . "' WHERE id_com_fournisseur=" . $test;
     if (mysqli_query($conn, $sql)) {
         echo "<script>alert('Commande modifiée avec succès')</script>";
         header("Location: listecomfournisseurs.php");
@@ -28,7 +29,6 @@ if (isset($_POST['submit'])) {
     <div class="title">Modifier commande</div>
     <div class="content">
         <form method="post" action="">
-            <?php while ($row = mysqli_fetch_assoc($resulttest)) { ?>
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">nom du fournisseur*</span>
@@ -56,22 +56,16 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="input-box">
                         <span class="details">Date</span>
-                        <input type="date" name="date" value="<?php echo $row['date']; ?>" required>
+                        <input type="date" name="date" value="<?php echo $row['date_commande']; ?>" required>
                     </div>
-                    <div class="input-box">
-                        <span class="details">Paiement</span>
-                        <select id="reglement" name="reglement" required>
-                            <option value="<?php echo $row['reglement']; ?>"><?php echo $row['reglement']; ?></option>
-                            <option value="impayee">impayée</option>
-                            <option value="payee">payée</option>
-                            <option value="en cours">en cours</option>
-                        </select>
-                    </div>
+        <div class="input-box">
+          <span class="details">Paiement</span>
+          <input type="checkbox" name="paiement" value="1" <?php if ($row['paye']) echo 'checked'; ?>>
+        </div>
                 </div>
                 <div class="button">
                     <input type="submit" value="Entrer" name="submit">
                 </div>
-            <?php  }; ?>
         </form>
     </div>
 </div>

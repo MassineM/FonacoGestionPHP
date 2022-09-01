@@ -8,14 +8,19 @@ if (isset($_POST['submit'])) {
   $date = $_POST['date'];
   $idCli = $_POST['client'];
   $validation = $_POST['validation'];
-  $sql = "UPDATE devis SET id_client='$idCli', date_devis='$date', valide='$validation' WHERE id_devis='$idDevis'";
+  $paiement = $_POST['paiement'];
+  $newID = $_POST['idDevis'];
+  $idVerif = mysqli_num_rows(mysqli_query($conn, "SELECT id_devis FROM devis WHERE id_devis='$newID'"));
+  if(!$idVerif || $newID==$idDevis){
+  $sql = "UPDATE devis SET id_devis='$newID', id_client='$idCli', date_devis='$date', valide='$validation', paye='$paiement' WHERE id_devis='$idDevis'";
   if (mysqli_query($conn, $sql)) {
     echo "<script>alert('Devis modifié avec succès')</script>";
-    header("Location: listecommandes.php?numdevis=" . $idDevis);
+    header("Location: listecommandes.php?numdevis=" . $newID);
   } else {
     echo "<script>alert('Erreur')</script>";
     echo "Erreur : " . $sql . "<br>" . mysqli_error($conn);
-  }
+  }}
+  else echo "<script>alert('Devis avec le même numéro existe déjà')</script>";
 }
 ?>
 
@@ -25,6 +30,10 @@ if (isset($_POST['submit'])) {
     <form method="post" action="">
       <div class="user-details">
         <div class="input-box">
+        <div class="input-box">
+          <span class="details">Numéro de devis</span>
+          <input type="number" name="idDevis" value="<?php echo $idDevis; ?>" required>
+        </div>
           <span class="details">Nom du client</span>
           <select id="" name="client" required>
             <option value="<?php echo $row['id_client']; ?>"><?php echo $row['nom']; ?></option>
@@ -44,6 +53,10 @@ if (isset($_POST['submit'])) {
         <div class="input-box">
           <span class="details">Valider</span>
           <input type="checkbox" name="validation" value="1" <?php if ($row['valide']) echo 'checked'; ?>>
+        </div>
+        <div class="input-box">
+          <span class="details">Paiement</span>
+          <input type="checkbox" name="paiement" value="1" <?php if ($row['paye']) echo 'checked'; ?>>
         </div>
       </div>
       <div class="button">

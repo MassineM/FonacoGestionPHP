@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
     <form method="post" action="">
       <div class="user-details">
         <div class="input-box">
-          <span class="details">designation</span>
+          <span class="details">Designation</span>
           <input type="text" name="designation" placeholder="designation..." required>
         </div>
         <div class="input-box">
@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
           <input type="number" name="qte" placeholder="quantité..." required>
         </div>
         <div class="input-box">
-          <span class="details">prix unitaire</span>
+          <span class="details">Prix unitaire</span>
           <input type="number" step="0.1" name="prixuni" placeholder="prix unitaire...">
         </div>
       </div>

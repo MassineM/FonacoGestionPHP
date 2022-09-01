@@ -8,9 +8,8 @@ if (isset($_POST['submit'])) {
   $prix_unitaire = $_POST['prix_unitaire'];
   $prix_total = $qte * $prix_unitaire;
   $date = $_POST['date'];
-  $reglement = $_POST['reglement'];
-  $sql = "INSERT INTO commandes_fournisseur (id_fournisseur,designation,qte,prix_unitaire,prix_total,date_commande,reglement) 
-                VALUES('$idfournisseur','$designation','$qte','$prix_unitaire','$prix_total','$date','$reglement')";
+  $sql = "INSERT INTO commandes_fournisseur (id_fournisseur,designation,qte,prix_unitaire,prix_total,date_commande,paye) 
+                VALUES('$idfournisseur','$designation','$qte','$prix_unitaire','$prix_total','$date',0)";
   if (mysqli_query($conn, $sql)) {
 
     echo "<script>alert('Nouvelle commande créée avec succès')</script>";
@@ -54,16 +53,7 @@ if (isset($_POST['submit'])) {
         </div>
         <div class="input-box">
           <span class="details">Date</span>
-          <input type="date" name="date" placeholder="date..." required>
-        </div>
-        <div class="input-box">
-          <span class="details">Paiement</span>
-          <select id="reglement" name="reglement" required>
-            <option value="">---paiement---</option>
-            <option value="impayee">impayée</option>
-            <option value="payee">payée</option>
-            <option value="en cours">en cours</option>
-          </select>
+          <input type="date" name="date" value="<?php echo date("Y-m-d"); ?>" required>
         </div>
       </div>
       <div class="button">

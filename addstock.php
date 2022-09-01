@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="input-box">
                     <span class="details">Date</span>
-                    <input type="date" name="date" placeholder="date..." required>
+                    <input type="date" name="date" value="<?php echo date("Y-m-d"); ?>" required>
                 </div>
             </div>
             <div class="button">

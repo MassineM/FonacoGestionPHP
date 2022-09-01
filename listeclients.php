@@ -1,7 +1,14 @@
 <?php
 include 'header.php';
 
-$sql = "select * from clients";
+if(isset($_GET['ord']) && isset($_GET['desc'])){
+    $order=$_GET['ord'];
+    $desc=$_GET['desc'];
+    if($desc) $sql = "SELECT * FROM clients ORDER BY ".$order." DESC";
+    else $sql = "SELECT * FROM clients ORDER BY ".$order;
+} else {
+    $sql = "SELECT * FROM clients ORDER BY id_client DESC";
+}
 $result = mysqli_query($conn, $sql) or die("bad query");
 $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
 if (isset($_GET['subb'])) {
@@ -22,11 +29,11 @@ if (isset($_GET['subb'])) {
 </div>
     <table class="fl-table">
         <tr>
-            <th>Client</th>
-            <th>Telephone</th>
-            <th>Email</th>
-            <th>Adresse</th>
-            <th>Montat max</th>
+            <th>Client<a href="listeclients.php?ord=nom&desc=0">⬆</a><a href="listeclients.php?ord=nom&desc=1">⬇</a></th>
+            <th>Telephone<a href="listeclients.php?ord=telephone&desc=0">⬆</a><a href="listeclients.php?ord=telephone&desc=1">⬇</a></th>
+            <th>Email<a href="listeclients.php?ord=email&desc=0">⬆</a><a href="listeclients.php?ord=email&desc=1">⬇</a></th>
+            <th>Adresse<a href="listeclients.php?ord=adresse&desc=0">⬆</a><a href="listeclients.php?ord=adresse&desc=1">⬇</a></th>
+            <th>Montat max<a href="listeclients.php?ord=montantmax&desc=0">⬆</a><a href="listeclients.php?ord=montantmax&desc=1">⬇</a></th>
         </tr>
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
             <tr>

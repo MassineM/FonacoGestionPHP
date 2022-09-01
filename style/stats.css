@@ -1,0 +1,421 @@
+@import url("https://fonts.googleapis.com/css?family=Satisfy|Zilla+Slab");
+
+.subcontainer{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.pietext{
+	text-align: center;
+}
+
+.card {
+	margin: 20px;
+	height: 240px;
+	width: 600px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.6);
+	overflow: hidden;
+}
+
+.card .statheader {
+	position: relative;
+	height: 80px;
+	width: 100%;
+	background: linear-gradient(135deg, #1f75ad, #884ca0);
+}
+
+.card .statheader .big {
+	position: absolute;
+	/* font-family: Satisfy, fantasy; */
+	font-size: 1.5rem;
+}
+
+.card .statheader .small {
+	position: absolute;
+	font-size: 1rem;
+}
+
+.card .statheader .stattitle {
+	top: 12px;
+	left: 15px;
+	color: #fff;
+}
+
+.card .statheader .date {
+	top: 2.5rem;
+	left: 15px;
+	color: #fff;
+}
+
+.card .statheader .type {
+	top: 14px;
+	right: 15px;
+	color: #fff;
+}
+
+.card .statheader .value {
+	position: absolute;
+	font-size: 1.5rem;
+	top: 2rem;
+	right: 15px;
+	color: #fff;
+}
+
+.card .parameter {
+	text-align: right;
+	padding: 10px 0 14px 0;
+}
+
+.card .parameter span {
+	position: relative;
+	font-size: .85rem;
+	color: #606060;
+	line-height: 13px;
+	padding: 0 10px 0 25px;
+}
+
+.card .parameter span:before {
+	position: absolute;
+	right: 60px;
+	top: 6px;
+	display: block;
+	content: '';
+	width: 11px;
+	height: 4px;
+	border-radius: 3px;
+}
+
+.card .parameter .red:before {
+	background: #643a7a;
+}
+
+.card .parameter .blue:before {
+	background: #547496;
+}
+
+.card .statistic {
+	position: relative;
+	height: 81px;
+	width: 580px;
+	margin: 0 auto;
+}
+
+.card .statistic .line-1, .card .statistic .line-2, .card .statistic .line-3 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: rgba(255, 192, 203, 0.3);
+}
+
+.card .statistic .line-2 {
+	top: 40px;
+}
+
+.card .statistic .line-3 {
+	top: inherit;
+	bottom: 0;
+}
+
+.card .statistic .data svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 570px;
+	bottom: 0;
+	stroke-dasharray: 1000;
+	stroke-dashoffset: 1000;
+	animation: 4s dash .5s linear forwards;
+}
+
+@keyframes dash {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+.card .statistic .data polyline {
+	fill: none;
+	stroke-width: 2;
+	stroke-linecap: round;
+}
+
+.card .statistic .data.red polyline {
+	stroke: #643a7a;
+}
+
+.card .statistic .data.blue polyline {
+	stroke: #547496;
+}
+
+.card .statistic .data .tooltip {
+	position: absolute;
+	z-index: 10;
+	bottom: 13px;
+	left: 50%;
+	transform: translate3d(-50%, 10px, 0);
+	font-weight: 600;
+	font-size: 11px;
+	line-height: 11px;
+	color: #fff;
+	padding: 8px 6px;
+	border-radius: 3px;
+	visibility: hidden;
+	opacity: 0;
+	transition: transform 0.4s ease-out 0s, opacity 0.4s ease-out 0s;
+}
+
+.card .statistic .data .tooltip:after {
+	position: absolute;
+	display: block;
+	content: '';
+	z-index: 10;
+	height: 6px;
+	width: 6px;
+	left: 50%;
+	margin-left: -3px;
+	bottom: -3px;
+	transform: rotate(45deg);
+}
+
+.card .statistic .data [class^="point-"] {
+	position: absolute;
+	z-index: 1;
+	width: 6px;
+	height: 6px;
+	border-radius: 3px;
+	cursor: pointer;
+	z-index: 10;
+}
+
+.card .statistic .data [class^="point-"]:hover .tooltip {
+	visibility: visible;
+	opacity: 1;
+	transform: translate3d(-50%, 0, 0);
+}
+
+.card .statistic .data.red [class^="point-"], .card .statistic .data.red .tooltip, .card .statistic .data.red .tooltip:after {
+	background: #643a7a;
+}
+
+.card .statistic .data.red .point-1 {
+	left: 7px;
+	top: 0px;
+}
+
+.card .statistic .data.red .point-2 {
+	left: 48px;
+	top: 77px;
+}
+
+.card .statistic .data.red .point-3 {
+	left: 88px;
+	top: 20px;
+}
+
+.card .statistic .data.red .point-4 {
+	left: 128px;
+	top: 8px;
+}
+
+.card .statistic .data.red .point-5 {
+	left: 168px;
+	top: 35px;
+}
+
+.card .statistic .data.red .point-6 {
+	left: 208px;
+	top: 45px;
+}
+
+.card .statistic .data.red .point-7 {
+	left: 248px;
+	top: 16px;
+}
+
+.card .statistic .data.red .point-8 {
+	left: 288px;
+	top: 0px;
+}
+
+.card .statistic .data.red .point-9 {
+	left: 328px;
+	top: 77px;
+}
+
+.card .statistic .data.red .point-10 {
+	left: 368px;
+	top: 20px;
+}
+
+.card .statistic .data.red .point-11 {
+	left: 408px;
+	top: 8px;
+}
+
+.card .statistic .data.red .point-12 {
+	left: 448px;
+	top: 35px;
+}
+
+.card .statistic .data.red .point-13 {
+	left: 488px;
+	top: 45px;
+}
+
+.card .statistic .data.red .point-14 {
+	left: 528px;
+	top: 16px;
+}
+
+.card .statistic .data.red .point-15 {
+	left: 568px;
+	top: 10px;
+}
+
+.card .statistic .data.blue [class^="point-"], .card .statistic .data.blue .tooltip, .card .statistic .data.blue .tooltip:after {
+	background: #547496;
+}
+
+.card .statistic .data.blue .point-1 {
+	left: 7px;
+	top: 58px;
+}
+
+.card .statistic .data.blue .point-2 {
+	left: 48px;
+	top: 47px;
+}
+
+.card .statistic .data.blue .point-3 {
+	left: 88px;
+	top: 62px;
+}
+
+.card .statistic .data.blue .point-4 {
+	left: 128px;
+	top: 52px;
+}
+
+.card .statistic .data.blue .point-5 {
+	left: 169px;
+	top: 58px;
+}
+
+.card .statistic .data.blue .point-6 {
+	left: 209px;
+	top: 71px;
+}
+
+.card .statistic .data.blue .point-7 {
+	left: 249px;
+	top: 61px;
+}
+
+.card .statistic .data.blue .point-8 {
+	left: 288px;
+	top: 58px;
+}
+
+.card .statistic .data.blue .point-9 {
+	left: 328px;
+	top: 47px;
+}
+
+.card .statistic .data.blue .point-10 {
+	left: 368px;
+	top: 62px;
+}
+
+.card .statistic .data.blue .point-11 {
+	left: 408px;
+	top: 52px;
+}
+
+.card .statistic .data.blue .point-12 {
+	left: 448px;
+	top: 58px;
+}
+
+.card .statistic .data.blue .point-13 {
+	left: 488px;
+	top: 71px;
+}
+
+.card .statistic .data.blue .point-14 {
+	left: 528px;
+	top: 61px;
+}
+
+.card .statistic .data.blue .point-15 {
+	left: 568px;
+	top: 70px;
+}
+
+.card .days {
+	width: 600px;
+	margin: 0 auto;
+}
+
+.card .days .day {
+	display: block;
+	float: left;
+	width: 40px;
+	font-size: 9px;
+	color: #949494;
+	line-height: 30px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+@property --p{
+	syntax: '<number>';
+	inherits: true;
+	initial-value: 0;
+  }
+  
+  .pie {
+	--p:20;
+	--b:22px;
+	--c:darkred;
+	--w:150px;
+	
+	width:var(--w);
+	aspect-ratio:1;
+	position:relative;
+	display:inline-grid;
+	margin:25px;
+	place-content:center;
+	font-size:25px;
+	font-weight:bold;
+	font-family:sans-serif;
+  }
+  .pie:before,
+  .pie:after {
+	content:"";
+	position:absolute;
+	border-radius:50%;
+  }
+  .pie:before {
+	inset:0;
+	background:
+	  radial-gradient(farthest-side,var(--c) 98%,#0000) top/var(--b) var(--b) no-repeat,
+	  conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+	-webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+			mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+  }
+  .pie:after {
+	inset:calc(50% - var(--b)/2);
+	background:var(--c);
+	transform:rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
+  }
+  .animate {
+	animation:p 1s .5s both;
+  }
+  @keyframes p {
+	from{--p:0}
+  }

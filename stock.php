@@ -1,7 +1,14 @@
 <?php
 include 'header.php';
 
-$sql = "select * from stock";
+if(isset($_GET['ord']) && isset($_GET['desc'])){
+    $order=$_GET['ord'];
+    $desc=$_GET['desc'];
+    if($desc) $sql = "SELECT * FROM stock ORDER BY ".$order." DESC";
+    else $sql = "SELECT * FROM stock ORDER BY ".$order;
+} else {
+    $sql = "SELECT * FROM stock ORDER BY `date` DESC";
+}
 $result = mysqli_query($conn, $sql) or die("bad query");
 $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
 
@@ -23,9 +30,9 @@ if (isset($_GET['subb'])) {
 </div>
     <table class="fl-table">
         <tr>
-            <th>Designation</th>
-            <th>Quantité</th>
-            <th>Date</th>
+            <th>Designation<a href="stock.php?ord=designation&desc=0">⬆</a><a href="stock.php?ord=designation&desc=1">⬇</a></th>
+            <th>Quantité<a href="stock.php?ord=qte&desc=0">⬆</a><a href="stock.php?ord=qte&desc=1">⬇</a></th>
+            <th>Date<a href="stock.php?ord=date&desc=0">⬆</a><a href="stock.php?ord=date&desc=1">⬇</a></th>
         </tr>
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
             <tr>

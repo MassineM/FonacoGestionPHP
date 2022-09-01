@@ -45,13 +45,13 @@ $result = mysqli_query($conn,$sql) or die ("bad query");
 $pdf -> SetY(120);
 while ($row=mysqli_fetch_assoc($result)) {
     $pdf -> SetX(25);
-    $pdf->Cell(210, 7, $row['designation'], 0, 0, 'L');
+    $pdf->Cell(210, 6, $row['designation'], 0, 0, 'L');
     $pdf -> SetX(138);
-    $pdf->Cell(12, 7, $row['quantite'], 0, 0, 'C');
+    $pdf->Cell(12, 6, $row['quantite'], 0, 0, 'C');
     $pdf -> SetX(150);
-    $pdf->Cell(26, 7, $row['prix_unitaire'], 0, 0, 'C');
+    $pdf->Cell(26, 6, $row['prix_unitaire'], 0, 0, 'C');
     $pdf -> SetX(176);
-    $pdf->Cell(18, 7, $row['total'], 0, 0, 'C');
+    $pdf->Cell(18, 6, $row['total'], 0, 0, 'C');
     $pdf->Ln();
 }
 
