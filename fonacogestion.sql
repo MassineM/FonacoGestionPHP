@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2022 at 05:48 PM
+-- Generation Time: Nov 07, 2022 at 03:44 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,10 +39,11 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id_admin`, `login`, `password`, `statut`) VALUES
-(1, 'fonacoltd', 0, 'admin'),
-(2, 'oussama', 123, 'admin'),
-(9, 'amal', 1234, 'admin'),
-(10, 'massine', 12345, 'admin');
+(1, 'Lahcen', 12354, 'utilisateur'),
+(2, 'Oussama', 12345, 'utilisateur'),
+(10, 'Massine', 12345, 'administrateur'),
+(13, 'Soufiane', 12345, 'administrateur'),
+(14, 'Zineb', 12345, 'comptable');
 
 -- --------------------------------------------------------
 
@@ -125,7 +126,8 @@ INSERT INTO `commandes` (`id_commande`, `id_devis`, `designation`, `quantite`, `
 (84, 8, 'test3', 33, 1.4, 46.2),
 (85, 8, 'test2', 12, 2.8, 33.6),
 (86, 20, 'hello', 12, 2, 24),
-(87, 18, 'test2', 100, 5.5, 550);
+(87, 18, 'test2', 100, 5.5, 550),
+(88, 21, 'test3', 9, 2.4, 21.6);
 
 -- --------------------------------------------------------
 
@@ -193,9 +195,10 @@ INSERT INTO `devis` (`id_devis`, `id_client`, `date_devis`, `total_ht`, `valide`
 (15, 1, '2022-08-29', 31.2, 1, 1),
 (16, 7, '2022-08-28', 38.5, 1, 0),
 (17, 1, '2022-08-22', 46, 1, 1),
-(18, 4, '2022-08-30', 597.2, 0, 0),
+(18, 4, '2022-08-30', 597.2, 1, 0),
 (19, 3, '2022-08-24', 6.4, 1, 0),
-(20, 2, '2022-07-29', 24, 0, 0);
+(20, 2, '2022-07-29', 24, 0, 0),
+(21, 4, '2022-10-23', 21.6, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -242,7 +245,11 @@ INSERT INTO `stock` (`id_stock`, `designation`, `qte`, `date`) VALUES
 (2, 'papier A3 300g', 10, '2022-08-03'),
 (3, 'test', 6, '2022-08-08'),
 (9, 'test3', 8, '2022-08-09'),
-(10, 'test2', 12, '2022-08-23');
+(10, 'test2', 12, '2022-08-23'),
+(11, 'Papier A3 80 g / m2', 260, '2022-09-10'),
+(12, 'Papier A3 toilé 300 g / m', 200, '2022-09-10'),
+(13, 'Adhésif soft touch', 20, '2022-09-09'),
+(14, 'Encre CMJN Xerox', 90, '2022-09-09');
 
 --
 -- Indexes for dumped tables
@@ -301,7 +308,7 @@ ALTER TABLE `stock`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `clients`
@@ -313,7 +320,7 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `commandes`
 --
 ALTER TABLE `commandes`
-  MODIFY `id_commande` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id_commande` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `commandes_fournisseur`
@@ -331,7 +338,7 @@ ALTER TABLE `fournisseurs`
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id_stock` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_stock` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables

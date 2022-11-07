@@ -3,7 +3,7 @@ include 'cnfig.php';
 session_start();
 error_reporting(0);
 
-if ($_SESSION['statut'] != "admin")
+if ($_SESSION['statut'] != "administrateur" && $_SESSION['statut'] != "utilisateur" && $_SESSION['statut'] != "comptable")
 	header("location: index.php");
 if (!$conn)
 	die("Échec de la connexion : " . mysqli_connect_error());
@@ -32,8 +32,10 @@ if (!$conn)
 		<a class="custom-btn btn-6" href="listecomfournisseurs.php"><span>Liste commandes fournisseur</span></a>
 		<br>
 		<a class="custom-btn btn-6" href="stock.php"><span>Stock</span></a>
-		<br>
-		<a class="custom-btn btn-6" href="addadmin.php"><span>Nouvel admin</span></a>
+		<?php if ($_SESSION['statut'] == "administrateur") echo
+		'<br>
+		<a class="custom-btn btn-6" href="listeusers.php"><span>Gérer les utilisateurs</span></a>';
+		?>
 		<br>
 		<a class="custom-btn btn-6" href="logout.php"><span>Logout</span></a>
 	</div>

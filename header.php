@@ -4,7 +4,7 @@ include 'functions.php';
 session_start();
 error_reporting(0);
 
-if ($_SESSION['statut'] != "admin")
+if ($_SESSION['statut'] != "administrateur" && $_SESSION['statut'] != "utilisateur" && $_SESSION['statut'] != "comptable")
   header("location: index.php");
 if (!$conn)
   die("Échec de la connexion : " . mysqli_connect_error());

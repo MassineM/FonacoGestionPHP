@@ -3,7 +3,7 @@ include 'cnfig.php';
 session_start();
 error_reporting(0);
 
-if ($_SESSION['statut'] == "admin")
+if ($_SESSION['statut'] == "administrateur" || $_SESSION['statut'] == "utilisateur" || $_SESSION['statut'] == "comptable")
   header("location: welcome.php");
 if (!$conn)
   die("Échec de la connexion : " . mysqli_connect_error());
@@ -11,8 +11,7 @@ if (!$conn)
 if (isset($_POST['submit'])) {
   $login = $_POST['login'];
   $password = ($_POST['password']);
-  $statut  = "admin";
-  $sql = "SELECT * FROM admins WHERE login='$login' AND password='$password'  AND statut='$statut'";
+  $sql = "SELECT * FROM admins WHERE login='$login' AND password='$password'";
   $result = mysqli_query($conn, $sql);
   if ($result->num_rows > 0) {
     $row = mysqli_fetch_assoc($result);
@@ -69,7 +68,7 @@ if (isset($_POST['submit'])) {
       </div>
       <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
         <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-          <h1>login</h1>
+          <h1>Login</h1>
         </div>
         <div class="formbg-outer">
           <div class="formbg">

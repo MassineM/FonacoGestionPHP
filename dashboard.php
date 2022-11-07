@@ -107,19 +107,19 @@ for ($i=0; $i < 15; $i++) {
 	<div class="subcontainer">
 		<div>
 			<div class="pie animate" style="--p:40;--c:orange"> 40%</div>
-			<h2 class="pietext">Papier A3</h2>
+			<h2 class="pietext">Papier A3<br/>80 g / m<sup>2</sup></h2>
 		</div>
 		<div>
 			<div class="pie animate" style="--p:75;--c:yellow"> 75%</div>
-			<h2 class="pietext">Papier A3</h2>
+			<h2 class="pietext">Papier A3<br/>toilé 300 g / m<sup>2</sup></h2>
 		</div>
 		<div>
 			<div class="pie animate" style="--p:20;--c:red"> 20%</div>
-			<h2 class="pietext">Papier A3</h2>
+			<h2 class="pietext">Adhésif<br/>soft touch</h2>
 		</div>
 		<div>
 			<div class="pie animate" style="--p:90;--c:lightgreen"> 90%</div>
-			<h2 class="pietext">Papier A3</h2>
+			<h2 class="pietext">Encre<br/>CMJN Xerox</h2>
 		</div>
 	</div>
 </div>
